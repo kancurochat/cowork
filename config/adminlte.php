@@ -255,11 +255,6 @@ return [
             'icon'        => 'fas fa-user-tag',
         ],
         [
-            'text'        => 'Permisos',
-            'url'         => 'permissions',
-            'icon'        => 'far fa-times-circle',
-        ],
-        [
             'text'        => 'Reservas',
             'url'         => 'reservations',
             'icon'        => 'fas fa-calendar-alt',

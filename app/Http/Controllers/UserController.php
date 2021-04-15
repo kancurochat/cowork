@@ -9,6 +9,7 @@ use Spatie\Permission\Models\Role;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Support\Arr;
+use Laravel\Ui\Presets\React;
 
 class UserController extends Controller
 {
@@ -20,7 +21,25 @@ class UserController extends Controller
     public function index(Request $request)
     {
         $data = User::all();
-        return view('users.index',compact('data'));
+        return view('users.index', compact('data'));
+    }
+
+    public function getOwners(Request $request)
+    {
+        $data = DB::table('users')
+            ->join('model_has_roles', 'users.id', '=', 'model_has_roles.model_id')
+            ->where('model_has_roles.role_id', '=', 2)
+            ->select('users.*')->get();
+
+        return view('owners.index', compact('data'));
+    }
+
+    // TO-DO
+    public function showOwner(Request $request, $id)
+    {
+        $data = 'TO-DO';
+
+        return view('owners.show', compact('data'));
     }
 
     /**
@@ -30,8 +49,8 @@ class UserController extends Controller
      */
     public function create()
     {
-        $roles = Role::pluck('name','name')->all();
-        return view('users.create',compact('roles'));
+        $roles = Role::pluck('name', 'name')->all();
+        return view('users.create', compact('roles'));
     }
 
     /**
@@ -56,7 +75,7 @@ class UserController extends Controller
         $user->assignRole($request->input('roles'));
 
         return redirect()->route('users.index')
-                        ->with('success','User created successfully');
+            ->with('success', 'User created successfully');
     }
 
     /**
@@ -68,7 +87,7 @@ class UserController extends Controller
     public function show($id)
     {
         $user = User::find($id);
-        return view('users.show',compact('user'));
+        return view('users.show', compact('user'));
     }
 
     /**
@@ -80,10 +99,10 @@ class UserController extends Controller
     public function edit($id)
     {
         $user = User::find($id);
-        $roles = Role::pluck('name','name')->all();
-        $userRole = $user->roles->pluck('name','name')->all();
+        $roles = Role::pluck('name', 'name')->all();
+        $userRole = $user->roles->pluck('name', 'name')->all();
 
-        return view('users.edit',compact('user','roles','userRole'));
+        return view('users.edit', compact('user', 'roles', 'userRole'));
     }
 
     /**
@@ -97,26 +116,26 @@ class UserController extends Controller
     {
         $this->validate($request, [
             'name' => 'required',
-            'email' => 'required|email|unique:users,email,'.$id,
+            'email' => 'required|email|unique:users,email,' . $id,
             'password' => 'same:confirm-password',
             'roles' => 'required'
         ]);
 
         $input = $request->all();
-        if(!empty($input['password'])){
+        if (!empty($input['password'])) {
             $input['password'] = Hash::make($input['password']);
-        }else{
-            $input = Arr::except($input,array('password'));
+        } else {
+            $input = Arr::except($input, array('password'));
         }
 
         $user = User::find($id);
         $user->update($input);
-        DB::table('model_has_roles')->where('model_id',$id)->delete();
+        DB::table('model_has_roles')->where('model_id', $id)->delete();
 
         $user->assignRole($request->input('roles'));
 
         return redirect()->route('users.index')
-                        ->with('success','User updated successfully');
+            ->with('success', 'User updated successfully');
     }
 
     /**
@@ -129,6 +148,6 @@ class UserController extends Controller
     {
         User::find($id)->delete();
         return redirect()->route('users.index')
-                        ->with('success','User deleted successfully');
+            ->with('success', 'User deleted successfully');
     }
 }

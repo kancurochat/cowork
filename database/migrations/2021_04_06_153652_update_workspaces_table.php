@@ -14,8 +14,8 @@ class UpdateWorkspacesTable extends Migration
     public function up()
     {
         Schema::table('workspaces', function (Blueprint $table) {
-            $table->foreign('user_id')->references('id')->on('users');
-            $table->foreign('space_type_id')->references('id')->on('space_types');
+            $table->foreign('user_id')->references('id')->on('users')->onDelete('cascade');
+            $table->foreign('space_type_id')->references('id')->on('space_types')->onDelete('cascade');
         });
     }
 

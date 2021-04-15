@@ -8,4 +8,8 @@ use Illuminate\Database\Eloquent\Model;
 class SpaceType extends Model
 {
     use HasFactory;
+
+    public function spaces() {
+        return $this->hasMany(Workspace::class);
+    }
 }
