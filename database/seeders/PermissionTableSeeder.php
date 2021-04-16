@@ -35,10 +35,6 @@ class PermissionTableSeeder extends Seeder
            'workspace-create',
            'workspace-edit',
            'workspace-delete',
-           'spacetype-list',
-           'spacetype-create',
-           'spacetype-edit',
-           'spacetype-delete',
         ];
 
         foreach ($permissions as $permission) {

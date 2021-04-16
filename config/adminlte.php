@@ -245,11 +245,6 @@ return [
             'icon'        => 'fas fa-user-tie',
         ],
         [
-            'text'        => 'Tipos de sala',
-            'url'         => 'types',
-            'icon'        => 'fas fa-tags',
-        ],
-        [
             'text'        => 'Roles',
             'url'         => 'roles',
             'icon'        => 'fas fa-user-tag',

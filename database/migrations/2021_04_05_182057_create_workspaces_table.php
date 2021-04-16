@@ -16,7 +16,8 @@ class CreateWorkspacesTable extends Migration
         Schema::create('workspaces', function (Blueprint $table) {
             $table->id();
             $table->unsignedBigInteger('user_id');
-            $table->unsignedBigInteger('space_type_id');
+            $table->string('name');
+            $table->string('address');
             $table->time('open');
             $table->time('close');
             $table->unsignedInteger('seats');
