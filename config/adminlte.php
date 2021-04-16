@@ -254,6 +254,11 @@ return [
             'url'         => 'reservations',
             'icon'        => 'fas fa-calendar-alt',
         ],
+        [
+            'text'        => 'Espacios de trabajo',
+            'url'         => 'workspaces',
+            'icon'        => 'fas fa-briefcase',
+        ],
         ['header' => 'account_settings'],
         [
             'text' => 'profile',

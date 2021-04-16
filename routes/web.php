@@ -4,6 +4,8 @@ use App\Http\Controllers\ReservationController;
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
+use App\Http\Controllers\WorkspaceController;
+use App\Models\Workspace;
 
 /*
 |--------------------------------------------------------------------------
@@ -34,6 +36,20 @@ Route::middleware(['auth'])->group(function () {
     // Owners
     Route::get('owners', [UserController::class, 'getOwners']);
     Route::get('owners/{id}', [UserController::class, 'showOwner']);
+
+    // Workspaces
+    Route::get('workspaces', [WorkspaceController::class, 'getWorkspaces']);
+
+    Route::get('workspaces/{id}', [WorkspaceController::class, 'show']);
+
+    Route::get('workspaces/create', [WorkspaceController::class, 'getCreate']);
+    Route::post('workspaces/create', [WorkspaceController::class, 'postCreate']);
+
+    Route::get('workspaces/{id}/edit', [WorkspaceController::class, 'getEdit']);
+    Route::put('workspaces/{id}/edit', [WorkspaceController::class, 'putEdit']);
+
+    Route::delete('workspaces/{id}/destroy', [WorkspaceController::class, 'destroy']);
+
 
     // Reservations
     Route::get('reservations', [ReservationController::class, 'getReservations']);
