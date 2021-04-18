@@ -24,7 +24,7 @@ class UserController extends Controller
         return view('users.index', compact('data'));
     }
 
-    public function getOwners(Request $request)
+    public function getOwners()
     {
         $data = DB::table('users')
             ->join('model_has_roles', 'users.id', '=', 'model_has_roles.model_id')

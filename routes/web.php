@@ -38,15 +38,15 @@ Route::middleware(['auth'])->group(function () {
     Route::get('owners/{id}', [UserController::class, 'showOwner']);
 
     // Workspaces
-    Route::get('workspaces', [WorkspaceController::class, 'getWorkspaces']);
-
-    Route::get('workspaces/{id}', [WorkspaceController::class, 'show']);
+    Route::get('workspaces', [WorkspaceController::class, 'getWorkspaces'])->name('workspaces');
 
     Route::get('workspaces/create', [WorkspaceController::class, 'getCreate']);
-    Route::post('workspaces/create', [WorkspaceController::class, 'postCreate']);
+    Route::post('workspaces/create', [WorkspaceController::class, 'postCreate'])->name('workspaces.create');
 
     Route::get('workspaces/{id}/edit', [WorkspaceController::class, 'getEdit']);
     Route::put('workspaces/{id}/edit', [WorkspaceController::class, 'putEdit']);
+
+    Route::get('workspaces/{id}', [WorkspaceController::class, 'show']);
 
     Route::delete('workspaces/{id}/destroy', [WorkspaceController::class, 'destroy']);
 

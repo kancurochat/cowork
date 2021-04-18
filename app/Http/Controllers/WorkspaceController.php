@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Workspace;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class WorkspaceController extends Controller
 {
@@ -18,17 +19,22 @@ class WorkspaceController extends Controller
     {
         $workspace = Workspace::find($id);
 
-        return view('workspaces.show', compact('workspaces'));
+        return view('workspaces.show', compact('workspace'));
     }
 
     public function getCreate()
     {
-        return view('workspaces.create');
+        $data = DB::table('users')
+            ->join('model_has_roles', 'users.id', '=', 'model_has_roles.model_id')
+            ->where('model_has_roles.role_id', '=', 2)
+            ->select('users.*')->get();
+
+        return view('workspaces.create', compact('data'));
     }
 
     public function postCreate(Request $request)
     {
-        $workspaces = new Workspace();
+        $workspace = new Workspace();
 
         // TO-DO
 
