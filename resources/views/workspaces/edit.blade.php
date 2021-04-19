@@ -21,10 +21,10 @@
 </div>
 @endif
 
-{!! Form::model($user, ['method' => 'PATCH','route' => ['users.update', $user->id]]) !!}
+{!! Form::model($workspace, ['method' => 'PUT','route' => ['workspaces.edit', $workspace->id]]) !!}
 <div class="row">
     <div class="pull-right mb-3">
-        <a class="btn btn-primary" href="{{ route('users.index') }}"> Volver</a>
+        <a class="btn btn-primary" href="{{ route('workspaces') }}"> Volver</a>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
@@ -34,27 +34,41 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>Email:</strong>
-            {!! Form::text('email', null, array('placeholder' => 'Email','class' => 'form-control')) !!}
+            <strong>Propietario:</strong>
+            <select name="owner" id="owner" class="form-control">
+                @foreach ($data as $owner)
+                <option value="{{$owner->id}}" @if ($owner->id == $workspace->owner->id)
+                    selected
+                    @endif>{{$owner->name}}</option>
+                @endforeach
+            </select>
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>Contraseña:</strong>
-            {!! Form::password('password', array('placeholder' => 'Password','class' => 'form-control')) !!}
+            <strong>Dirección:</strong>
+            {!! Form::text('address',null, array('placeholder' => 'Dirección','class' => 'form-control')) !!}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>Confirmar contraseña:</strong>
-            {!! Form::password('confirm-password', array('placeholder' => 'Confirm Password','class' => 'form-control'))
+            <strong>Apertura:</strong>
+            {!! Form::time('open', null, array('class' => 'form-control'))
             !!}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>Roles:</strong>
-            {!! Form::select('roles[]', $roles,$userRole, array('class' => 'form-control','multiple')) !!}
+            <strong>Cierre:</strong>
+            {!! Form::time('close', null, array('class' => 'form-control'))
+            !!}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Aforo:</strong>
+            {!! Form::number('seats', null, array('class' => 'form-control', 'min' => 1))
+            !!}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12 text-center">

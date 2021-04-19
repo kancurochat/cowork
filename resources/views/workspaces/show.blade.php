@@ -9,29 +9,44 @@
 @section('content')
 <div class="row">
     <div class="pull-right mb-3">
-        <a class="btn btn-primary" href="{{ route('users.index') }}"> Volver</a>
+        <a class="btn btn-primary" href="{{ route('workspaces') }}"> Volver</a>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Nombre:</strong>
-            {{ $user->name }}
+            {{ $workspace->name }}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>Email:</strong>
-            {{ $user->email }}
+            <strong>Dirección:</strong>
+            {{ $workspace->address }}
         </div>
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>Roles:</strong>
-            @if(!empty($user->getRoleNames()))
-                @foreach($user->getRoleNames() as $v)
-                    <label class="badge badge-success">{{ $v }}</label>
-                @endforeach
-            @endif
+            <strong>Propietario:</strong>
+            {{ $workspace->owner->email }}
         </div>
     </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Horario:</strong>
+            {{ $workspace->open }} - {{$workspace->close}}
+        </div>
+    </div>
+    <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">
+            <strong>Aforo:</strong>
+            {{ $workspace->seats }}
+        </div>
+    </div>
+
+    {{-- <div class="col-xs-12 col-sm-12 col-md-12">
+        <div class="form-group">                        TO-DO
+            <strong>Foto:</strong>
+            {{ $workspace->photo }}
+        </div>
+    </div> --}}
 </div>
 @endsection

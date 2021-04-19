@@ -28,15 +28,15 @@
                 <tr>
                     <td>{{ $workspace->id}}</td>
                     <td>{{ $workspace->name }}</td>
-                    <td>{{ $workspace->owner }}</td>
+                    <td>{{ $workspace->owner->email }}</td>
                     <td>{{ $workspace->address }}</td>
                     <td>{{ $workspace->open }}</td>
                     <td>{{ $workspace->close }}</td>
                     <td>{{ $workspace->seats }}</td>
                     <td>
-                        <a class="btn btn-info" href="{{-- {{ route('workspaces.show',$user->id) }} --}}">Mostrar</a>
-                        <a class="btn btn-primary" href="{{-- {{ route('users.edit',$user->id) }} --}}">Editar</a>
-                        <form action="users/{{$user->id}}" style="display:inline" method="POST">
+                        <a class="btn btn-info" href="{{ route('workspaces.show',$workspace->id) }}">Mostrar</a>
+                        <a class="btn btn-primary" href="{{ route('workspaces.edit',$workspace->id) }}">Editar</a>
+                        <form action="workspaces/{{$workspace->id}}" style="display:inline" method="POST">
                             @csrf
                             @method('DELETE')
                             <input class="btn btn-danger" type="submit" value="Eliminar">

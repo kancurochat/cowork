@@ -43,12 +43,12 @@ Route::middleware(['auth'])->group(function () {
     Route::get('workspaces/create', [WorkspaceController::class, 'getCreate']);
     Route::post('workspaces/create', [WorkspaceController::class, 'postCreate'])->name('workspaces.create');
 
-    Route::get('workspaces/{id}/edit', [WorkspaceController::class, 'getEdit']);
+    Route::get('workspaces/{id}/edit', [WorkspaceController::class, 'getEdit'])->name('workspaces.edit');
     Route::put('workspaces/{id}/edit', [WorkspaceController::class, 'putEdit']);
 
-    Route::get('workspaces/{id}', [WorkspaceController::class, 'show']);
+    Route::get('workspaces/{id}', [WorkspaceController::class, 'show'])->name('workspaces.show');
 
-    Route::delete('workspaces/{id}/destroy', [WorkspaceController::class, 'destroy']);
+    Route::delete('workspaces/{id}', [WorkspaceController::class, 'destroy']);
 
 
     // Reservations

@@ -36,7 +36,14 @@ class WorkspaceController extends Controller
     {
         $workspace = new Workspace();
 
-        // TO-DO
+        $workspace->name = $request->input('name');
+        $workspace->user_id = $request->input('owner');
+        $workspace->address = $request->input('address');
+        $workspace->open = $request->input('open');
+        $workspace->close = $request->input('close');
+        $workspace->seats = $request->input('seats');
+
+        $workspace->save();
 
         return redirect('workspaces');
     }
@@ -45,13 +52,25 @@ class WorkspaceController extends Controller
     {
         $workspace = Workspace::find($id);
 
-        return view('workspaces.edit', compact('workspace'));
+        $data = DB::table('users')
+            ->join('model_has_roles', 'users.id', '=', 'model_has_roles.model_id')
+            ->where('model_has_roles.role_id', '=', 2)
+            ->select('users.*')->get();
+
+        return view('workspaces.edit', compact('workspace', 'data'));
     }
 
-    public function putEdit($id) {
+    public function putEdit(Request $request, $id) {
         $workspace = Workspace::find($id);
 
-        // TO-DO
+        $workspace->name = $request->input('name');
+        $workspace->user_id = $request->input('owner');
+        $workspace->address = $request->input('address');
+        $workspace->open = $request->input('open');
+        $workspace->close = $request->input('close');
+        $workspace->seats = $request->input('seats');
+
+        $workspace->save();
 
         return redirect('workspaces');
     }
