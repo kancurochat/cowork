@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Owners - Cowork')
+@section('title', 'Owners - Canary Workspaces')
 
 @section('content_header')
 <h1>Propietarios</h1>

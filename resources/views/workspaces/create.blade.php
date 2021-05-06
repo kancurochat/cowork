@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Workspaces - Cowork')
+@section('title', 'Workspaces - Canary Workspaces')
 
 @section('content_header')
 <h1>Nuevo Espacio de trabajo</h1>

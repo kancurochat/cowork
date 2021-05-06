@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Roles - Cowork')
+@section('title', 'Roles - Canary Workspaces')
 
 @section('content_header')
 <h1>Mostrar Rol</h1>

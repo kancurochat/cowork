@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Reservations - Cowork')
+@section('title', 'Reservations - Canary Workspaces')
 
 @section('content_header')
 <h1>Nueva Reserva</h1>

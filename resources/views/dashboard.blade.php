@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Cowork')
+@section('title', 'Canary Workspaces')
 
 @section('content_header')
 <h1>Panel principal</h1>

@@ -1,6 +1,6 @@
 @extends('adminlte::page')
 
-@section('title', 'Users - Cowork')
+@section('title', 'Users - Canary Workspaces')
 
 @section('content_header')
 <h1>Editar Usuario</h1>
