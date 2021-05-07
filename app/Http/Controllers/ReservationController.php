@@ -87,4 +87,25 @@ class ReservationController extends Controller
 
         return redirect('reservations');
     }
+
+    public function makeReservation(Request $request)
+    {
+        $reservation = new Reservation();
+
+        $reservation->user_id = $request->input('user');
+        $reservation->date = $request->input('date');
+        $reservation->workspace_id = $request->input('workspace');
+
+        if(str_ends_with($request->input('start'), 'PM')){
+            // TO-DO descubrir qué hacer para transformar las horas a formato 24h
+        }
+
+        $reservation->start = $request->input('start');
+        $reservation->end = $request->input('end');
+
+        $reservation->save();
+
+        return redirect('reservations');
+    }
+
 }

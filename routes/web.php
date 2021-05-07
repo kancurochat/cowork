@@ -70,4 +70,6 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('calendar', [HomeController::class, 'index']);
 
+    Route::post('calendar', [ReservationController::class, 'makeReservation'])->name('calendar.reserve');
+
 });

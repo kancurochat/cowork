@@ -14,7 +14,7 @@ document.addEventListener('DOMContentLoaded', function () {
         initialView: 'dayGridMonth',
         dateClick: function (info) {
             alert('Clicked on: ' + info.dateStr);
-            modal.innerHTML = info.dateStr;
+            modal.value = info.dateStr;
             $("#reservation").modal();
         },
         headerToolbar: {

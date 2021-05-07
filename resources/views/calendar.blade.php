@@ -7,6 +7,13 @@
 @stop
 
 @section('content')
+{{--
+    DESCOMENTAR SI SE ROMPE EL RELOJ
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
+--}}
+
+
+
 {{-- <script>
     document.addEventListener('DOMContentLoaded', function() {
       var calendarEl = document.getElementById('calendar');
@@ -39,12 +46,28 @@
                         </button>
                     </div>
                     <div class="modal-body bg-white">
-                        <p>El día seleccionado es:</p><span id="fecha"></span>
+                        <form action="{{route('calendar.reserve')}}" method="post">
+                            @csrf
+                            <span>Reservar el día :</span>
+                            <input type="date" name="date" id="fecha">
+                            <br>
+                            <span>Desde las:</span>
+                            <div id="start">
+                                <input class="timepicker-ui-input" value="12:00 AM" name="start" />
+                            </div>
+                            <br>
+                            <span>Hasta las:</span>
+                            <div id="end">
+                                <input class="timepicker-ui-input" value="12:00 AM" name="end" />
+                            </div>
+                            <input type="hidden" name="user" value="{{ Auth::user()->id}}">
+                            <input type="hidden" name="workspace" value="1">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>
-                        <button type="button" class="btn btn-success">Reservar</button>
+                        <button type="submit" class="btn btn-success">Reservar</button>
                     </div>
+                    </form>
                 </div>
             </div>
         </div>
