@@ -55,9 +55,9 @@ class ReservationController extends Controller
         $reservation = Reservation::find($id);
 
         $data = DB::table('users')
-        ->join('model_has_roles', 'users.id', '=', 'model_has_roles.model_id')
-        ->where('model_has_roles.role_id', '=', 3)
-        ->select('users.*')->get();
+            ->join('model_has_roles', 'users.id', '=', 'model_has_roles.model_id')
+            ->where('model_has_roles.role_id', '=', 3)
+            ->select('users.*')->get();
 
         $workspaces = Workspace::all();
 
@@ -96,16 +96,20 @@ class ReservationController extends Controller
         $reservation->date = $request->input('date');
         $reservation->workspace_id = $request->input('workspace');
 
-        if(str_ends_with($request->input('start'), 'PM')){
-            // TO-DO descubrir qué hacer para transformar las horas a formato 24h
-        }
-
-        $reservation->start = $request->input('start');
-        $reservation->end = $request->input('end');
+        // Queda pendiente utilizar otro plugin para escoger el tiempo
+        $reservation->start = date("H:i", strtotime($request->input('start')));
+        $reservation->end = date("H:i", strtotime($request->input('end')));
 
         $reservation->save();
 
-        return redirect('reservations');
+        // Esto puede cambiar
+        return redirect('calendar');
     }
 
+    public function calendarReservations()
+    {
+        $data = DB::table('reservations')->select('user_id as title','date as start','date as end','start as description')->get();
+
+        return Response()->json($data);
+    }
 }

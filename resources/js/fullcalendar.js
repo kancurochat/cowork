@@ -22,6 +22,7 @@ document.addEventListener('DOMContentLoaded', function () {
             center: 'title',
             right: 'dayGridMonth,timeGridWeek,listWeek'
         },
+        events: 'calendarReservations'
         // go ahead with other parameters
     });
 
