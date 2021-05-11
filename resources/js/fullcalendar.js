@@ -3,6 +3,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import listPlugin from '@fullcalendar/list';
 import interactionPlugin from '@fullcalendar/interaction';
+import esLocale from '@fullcalendar/core/locales/es';
 
 document.addEventListener('DOMContentLoaded', function () {
     const calendarEl = document.getElementById("calendar");
@@ -10,10 +11,12 @@ document.addEventListener('DOMContentLoaded', function () {
     let modal = document.querySelector('#fecha');
 
     let calendar = new Calendar(calendarEl, {
+        locale: esLocale,
         plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin],
         initialView: 'dayGridMonth',
+        displayEventTime: true,
+        selectable: true,
         dateClick: function (info) {
-            alert('Clicked on: ' + info.dateStr);
             modal.value = info.dateStr;
             $("#reservation").modal();
         },
