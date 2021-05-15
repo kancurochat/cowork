@@ -68,10 +68,11 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('reservations/{id}', [ReservationController::class, 'destroy']);
     });
 
-    Route::get('calendar', [HomeController::class, 'index']);
-
-    Route::get('calendarReservations', [ReservationController::class, 'calendarReservations']);
-
+    Route::get('calendar', function () {
+        return view('calendar');
+    });
     Route::post('calendar', [ReservationController::class, 'makeReservation'])->name('calendar.reserve');
 
+    /* // Crear API con esta ruta
+    Route::get('calendarReservations', [ReservationController::class, 'calendarReservations']); */
 });

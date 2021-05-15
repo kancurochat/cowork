@@ -46,7 +46,7 @@
                         </button>
                     </div>
                     <div class="modal-body bg-white">
-                        <form action="{{route('calendar.reserve')}}" method="post">
+                        <form id="datos" action="{{-- {{route('calendar.reserve')}} --}}" method="post">
                             @csrf
                             <span>Reservar el día :</span>
                             <input type="date" name="date" id="fecha">
