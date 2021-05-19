@@ -30,8 +30,8 @@ document.addEventListener('DOMContentLoaded', function () {
 
 
             fecha.value = start_time.format('YYYY-MM-DD');
-            start.innerHTML = start_time.format('HH:mm');
-            end.innerHTML = end_time;
+            start.value = start_time.format('HH:mm');
+            end.value = end_time;
 
             $("#reservation").modal();
         },

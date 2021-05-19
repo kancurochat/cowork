@@ -48,11 +48,19 @@
                     <div class="modal-body bg-white text-center">
                         <form id="datos" action="{{route('calendar.reserve')}}" method="post">
                             @csrf
-                            <label for="date">Reservar el día :</label>
-                            <input type="date" name="date" id="fecha">
-                            <p class="text-lg">Desde las: <span id="start_time"></span></p>
-                            <p class="text-lg">Hasta las: <span id="end_time" ></span></p>
-                            
+                            <div class="input-group">
+                                <span class="input-group-text">Reservar el día</span>
+                                <input name="date" id="fecha" type="date" class="form-control text-center" readonly>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-text">Desde las</span>
+                                <input name="start" id="start_time" type="time" class="form-control text-center" readonly>
+                            </div>
+                            <div class="input-group">
+                                <span class="input-group-text">Hasta las</span>
+                                <input name="end" id="end_time" type="time" class="form-control text-center" readonly>
+                            </div>
+
                             <input type="hidden" name="user" value="{{ Auth::user()->id}}">
                             <input type="hidden" name="workspace" value="1">
                     </div>

@@ -95,10 +95,8 @@ class ReservationController extends Controller
         $reservation->user_id = $request->input('user');
         $reservation->date = $request->input('date');
         $reservation->workspace_id = $request->input('workspace');
-
-        // Queda pendiente utilizar otro plugin para escoger el tiempo
-        $reservation->start = date("H:i", strtotime($request->input('start')));
-        $reservation->end = date("H:i", strtotime($request->input('end')));
+        $reservation->start = $request->input('start');
+        $reservation->end = $request->input('end');
 
         $reservation->save();
 
