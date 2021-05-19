@@ -1,7 +1,5 @@
 import { Calendar } from '@fullcalendar/core';
-import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
-import listPlugin from '@fullcalendar/list';
 import interactionPlugin from '@fullcalendar/interaction';
 import esLocale from '@fullcalendar/core/locales/es';
 import momentPlugin, { toMoment } from '@fullcalendar/moment';
@@ -9,22 +7,38 @@ import momentPlugin, { toMoment } from '@fullcalendar/moment';
 document.addEventListener('DOMContentLoaded', function () {
     const calendarEl = document.getElementById("calendar");
 
-    let modal = document.querySelector('#fecha');
+    let fecha = document.querySelector('#fecha');
+    let start = document.querySelector('#start_time');
+    let end = document.querySelector('#end_time');
 
     let calendar = new Calendar(calendarEl, {
         locale: esLocale,
-        plugins: [dayGridPlugin, timeGridPlugin, listPlugin, interactionPlugin, momentPlugin],
-        initialView: 'dayGridMonth',
+        plugins: [timeGridPlugin, interactionPlugin, momentPlugin],
+        initialView: 'timeGridWeek',
         displayEventTime: true,
         selectable: true,
         selectMirror: true,
-        dateClick: function (info) {
-            /* let date = new Date(info.dateStr); */
-            /* Error con el plugin Moment de FullCalendar */
-            let time = toMoment(info.date, calendar);
-            modal.value = info.dateStr;
-            console.log(time);
+        defaultAllDay: false,
+        allDaySlot: false,
+        selectOverlap: false,
+        select: function (info) {
+            // Defino las fechas de inicio y la hora de salida
+            let startDate = new Date(info.startStr);
+            let start_time = toMoment(startDate, calendar);
+            let endDate = new Date(info.endStr);
+            let end_time = toMoment(endDate, calendar).format('HH:mm');
+
+
+            fecha.value = start_time.format('YYYY-MM-DD');
+            start.innerHTML = start_time.format('HH:mm');
+            end.innerHTML = end_time;
+
             $("#reservation").modal();
+        },
+        selectAllow: function(info){
+            if (info.end.getDate() == info.start.getDate()) {
+                return true;
+            }
         },
         /* unselect: function (info, view) {
             $.ajax({
@@ -41,7 +55,7 @@ document.addEventListener('DOMContentLoaded', function () {
         headerToolbar: {
             left: 'prev,next today',
             center: 'title',
-            right: 'dayGridMonth,timeGridWeek,listWeek'
+            right: ''
         },
         events: 'api/reservations'
         // go ahead with other parameters
@@ -49,3 +63,4 @@ document.addEventListener('DOMContentLoaded', function () {
 
     calendar.render();
 });
+

@@ -103,16 +103,17 @@ class ReservationController extends Controller
         $reservation->save();
 
         // Esto puede cambiar
-        return view('calendar');
+        return redirect('calendar');
     }
 
     public function calendarReservations()
     {
-        $data = DB::table('reservations')->select('user_id as title','date as start','date as end','start as description')->get();
+        $data = DB::table('reservations')->select('user_id as title','date as start','date as end','start as time_start', 'end as time_end')->get();
 
-        /* $data->toJson(); */
-
-        /* return view('calendar', compact('data')); */
+        foreach($data as $event){
+            $event->start = $event->start.'T'.$event->time_start; 
+            $event->end = $event->end.'T'.$event->time_end; 
+        }
 
         return Response()->json($data);
     }

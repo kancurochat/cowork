@@ -45,21 +45,14 @@
                             <span aria-hidden="true">&times;</span>
                         </button>
                     </div>
-                    <div class="modal-body bg-white">
-                        <form id="datos" action="{{-- {{route('calendar.reserve')}} --}}" method="post">
+                    <div class="modal-body bg-white text-center">
+                        <form id="datos" action="{{route('calendar.reserve')}}" method="post">
                             @csrf
-                            <span>Reservar el día :</span>
+                            <label for="date">Reservar el día :</label>
                             <input type="date" name="date" id="fecha">
-                            <br>
-                            <span>Desde las:</span>
-                            <div id="start">
-                                <input class="timepicker-ui-input" value="12:00 AM" name="start" />
-                            </div>
-                            <br>
-                            <span>Hasta las:</span>
-                            <div id="end">
-                                <input class="timepicker-ui-input" value="12:00 AM" name="end" />
-                            </div>
+                            <p class="text-lg">Desde las: <span id="start_time"></span></p>
+                            <p class="text-lg">Hasta las: <span id="end_time" ></span></p>
+                            
                             <input type="hidden" name="user" value="{{ Auth::user()->id}}">
                             <input type="hidden" name="workspace" value="1">
                     </div>
