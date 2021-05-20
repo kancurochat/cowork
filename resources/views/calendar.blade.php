@@ -1,32 +1,6 @@
-@extends('adminlte::page')
-
-@section('title', 'Canary Workspaces')
-
-@section('content_header')
-<h1>Reserva un espacio de trabajo</h1>
-@stop
+@extends('layouts.app')
 
 @section('content')
-{{--
-    DESCOMENTAR SI SE ROMPE EL RELOJ
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet" />
---}}
-
-
-
-{{-- <script>
-    document.addEventListener('DOMContentLoaded', function() {
-      var calendarEl = document.getElementById('calendar');
-      var calendar = new FullCalendar.Calendar(calendarEl, {
-        initialView: 'dayGridMonth',
-        dateClick: function() {
-          alert('a day has been clicked!');
-        }
-      });
-      calendar.render();
-    });
-
-</script> --}}
 <div class="container-fluid">
     <div class="row">
         <!-- /.col -->
@@ -38,7 +12,7 @@
         <div class="modal fade" id="reservation" tabindex="-1" role="dialog" aria-labelledby="Modal Reserva"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
-                <div class="modal-content bg-navy">
+                <div class="modal-content bg-primary">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Reservar Espacio de Trabajo</h5>
                         <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">
@@ -76,5 +50,5 @@
     </div>
     <!-- /.row -->
 </div><!-- /.container-fluid -->
-<script src="{{ asset('js/app.js') }}"></script>
+{{-- <script src="{{ asset('js/app.js') }}"></script> --}}
 @stop

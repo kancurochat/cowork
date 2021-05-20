@@ -73,6 +73,4 @@ Route::middleware(['auth'])->group(function () {
     });
     Route::post('calendar', [ReservationController::class, 'makeReservation'])->name('calendar.reserve');
 
-    /* // Crear API con esta ruta
-    Route::get('calendarReservations', [ReservationController::class, 'calendarReservations']); */
 });
