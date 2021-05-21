@@ -22,6 +22,12 @@ class WorkspaceController extends Controller
         return view('workspaces.show', compact('workspace'));
     }
 
+    public function showCalendar($id){
+        $workspace = Workspace::find($id);
+
+        return view('workspaces.calendar', compact('workspace'));
+    }
+
     public function getCreate()
     {
         $data = DB::table('users')

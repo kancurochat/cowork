@@ -33,11 +33,11 @@
     <div class="col-auto">
         <div class="card card-primary card-outline">
             <div class="card-header">
-                <h5 class="m-0">Tipos de salas</h5>
+                <h5 class="m-0">Espacios de Trabajo</h5>
             </div>
             <div class="card-body">
-                <p class="card-text">Gestiona los tipos de salas disponibles.</p>
-                <a href="#" class="btn btn-primary">Acceder</a>
+                <p class="card-text">Gestiona las salas disponibles.</p>
+                <a href="workspaces" class="btn btn-primary">Acceder</a>
             </div>
         </div>
     </div>

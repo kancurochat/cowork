@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid">
+<div class="container-fluid py-2">
     <div class="row">
         <!-- /.col -->
         <div class="col-12">
@@ -36,7 +36,7 @@
                             </div>
 
                             <input type="hidden" name="user" value="{{ Auth::user()->id}}">
-                            <input type="hidden" name="workspace" value="1">
+                            <input type="hidden" name="workspace" value="{{$workspace->id}}">
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-danger" data-dismiss="modal">Cerrar</button>

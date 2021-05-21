@@ -57,7 +57,7 @@ document.addEventListener('DOMContentLoaded', function () {
             center: 'title',
             right: ''
         },
-        events: 'api/reservations'
+        events: '/api/reservations/' + window.location.href.substr(-1)
         // go ahead with other parameters
     });
 

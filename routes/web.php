@@ -68,9 +68,7 @@ Route::middleware(['auth'])->group(function () {
         Route::delete('reservations/{id}', [ReservationController::class, 'destroy']);
     });
 
-    Route::get('calendar', function () {
-        return view('calendar');
-    });
+    Route::get('workspace/{id}', [WorkspaceController::class, 'showCalendar']);
     Route::post('calendar', [ReservationController::class, 'makeReservation'])->name('calendar.reserve');
 
 });

@@ -100,13 +100,15 @@ class ReservationController extends Controller
 
         $reservation->save();
 
+        $redirection = 'workspace/' . $reservation->workspace_id;
+
         // Esto puede cambiar
-        return redirect('calendar');
+        return redirect($redirection);
     }
 
-    public function calendarReservations()
+    public function calendarReservations($id)
     {
-        $data = DB::table('reservations')->select('user_id as title','date as start','date as end','start as time_start', 'end as time_end')->get();
+        $data = DB::table('reservations')->where('workspace_id', '=', $id)->select('user_id as title','date as start','date as end','start as time_start', 'end as time_end')->get();
 
         foreach($data as $event){
             $event->start = $event->start.'T'.$event->time_start; 
