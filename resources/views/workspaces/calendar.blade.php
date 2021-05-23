@@ -1,8 +1,30 @@
 @extends('layouts.app')
 
 @section('content')
-<div class="container-fluid py-2">
+<div class="py-2">
     <div class="row">
+        <div class="col-12 text-center">
+            <h1 class="my-4">{{$workspace->name}}</h1>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 px-0 d-inline-flex">
+            <div class="col-6 bg-primary text-white h4 p-4 text-center">
+                <p>Email de contacto: <a class="text-white" href="mailto:{{$workspace->owner->email}}">{{$workspace->owner->email}}</a></p>
+                <p>Dirección: {{$workspace->address}}</p>
+                <p>Horario: <span id="open_time">{{date('H:i', strtotime($workspace->open))}}</span> - <span id="close_time">{{date('H:i', strtotime($workspace->close))}}</span></p>
+            </div>
+            <div class="col-6 h4 p-4 text-center border border-primary">
+                <h4 class="p-5 h3">Capacidad: {{$workspace->seats}}</h4>
+            </div>
+        </div>
+    </div>
+    <div class="row">
+        <div class="col-12 text-center  bg-primary ">
+            <h1 class="my-4 text-white">Haz tu reserva</h1>
+        </div>
+    </div>
+    <div class="row my-3">
         <!-- /.col -->
         <div class="col-12">
             <div id="calendar"></div>
@@ -50,5 +72,4 @@
     </div>
     <!-- /.row -->
 </div><!-- /.container-fluid -->
-{{-- <script src="{{ asset('js/app.js') }}"></script> --}}
 @stop

@@ -21,6 +21,8 @@ document.addEventListener('DOMContentLoaded', function () {
         defaultAllDay: false,
         allDaySlot: false,
         selectOverlap: false,
+        slotMinTime: document.querySelector('#open_time').innerHTML,
+        slotMaxTime: document.querySelector('#close_time').innerHTML,
         select: function (info) {
             // Defino las fechas de inicio y la hora de salida
             let startDate = new Date(info.startStr);
