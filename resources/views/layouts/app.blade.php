@@ -19,14 +19,15 @@
     <link href="https://fonts.googleapis.com/css?family=Nunito" rel="stylesheet">
 
     <!-- Styles -->
+    <link rel="stylesheet" href="{{asset('css/adminlte.min.css')}}">
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
 </head>
 
 <body>
     <div id="app">
-        <nav class="navbar navbar-expand-md navbar-light bg-primary shadow-sm">
+        <nav class="navbar navbar-expand-md navbar-light bg-navy shadow-sm">
             <div class="container">
-                @if (Auth())
+                @if (Auth::check())
                 <div class="input-group rounded col-2 d-none d-md-flex">
                     <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
                         aria-describedby="search-addon" />
@@ -66,13 +67,13 @@
                         @guest
                         @if (Route::has('login'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('login') }}">{{ __('Login') }}</a>
+                            <a class="nav-link text-white" href="{{ route('login') }}">{{ __('Login') }}</a>
                         </li>
                         @endif
 
                         @if (Route::has('register'))
                         <li class="nav-item">
-                            <a class="nav-link" href="{{ route('register') }}">{{ __('Register') }}</a>
+                            <a class="nav-link text-white" href="{{ route('register') }}">{{ __('Register') }}</a>
                         </li>
                         @endif
                         @else

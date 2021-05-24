@@ -8,6 +8,7 @@ use App\Http\Controllers\RoleController;
 use App\Http\Controllers\WorkspaceController;
 use App\Models\Workspace;
 
+
 /*
 |--------------------------------------------------------------------------
 | Web Routes
@@ -23,12 +24,10 @@ Auth::routes();
 
 Route::middleware(['auth'])->group(function () {
 
+    Route::get('/', [HomeController::class, 'index']);
+
     // Admin routes
     Route::group(['middleware' => ['role:root']], function () {
-        // Usar controlador para la vista
-        Route::get('/', function () {
-            return view('dashboard');
-        })->middleware('role:root|owner');
 
         // Roles
         Route::resource('roles', RoleController::class);

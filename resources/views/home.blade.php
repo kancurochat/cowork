@@ -2,21 +2,22 @@
 
 @section('content')
 <div class="container">
-    <div class="row justify-content-center">
-        <div class="col-md-8">
-            <div class="card">
-                <div class="card-header">{{ __('Dashboard') }}</div>
-
+    <div class="row justify-content-center my-3">
+        @foreach ($workspaces as $workspace)
+        <div class="col-4">
+            <div class="card text-center">
+                <div class="card-header"><h3>{{$workspace->name}}</h3></div>
                 <div class="card-body">
-                    @if (session('status'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session('status') }}
-                        </div>
-                    @endif
-
-                    {{ __('You are logged in!') }}
+                    <p>{{$workspace->address}}</p>
+                    <a class="btn bg-navy text-white" href="workspace/{{$workspace->id}}">Reservar</a>
                 </div>
             </div>
+        </div>
+        @endforeach
+    </div>
+    <div class="row text-center">
+        <div class="col-12 text-center">
+            {{$workspaces->links()}}
         </div>
     </div>
 </div>

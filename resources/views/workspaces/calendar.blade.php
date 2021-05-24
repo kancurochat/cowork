@@ -9,7 +9,7 @@
     </div>
     <div class="row">
         <div class="col-12 px-0 d-inline-flex">
-            <div class="col-6 bg-primary text-white h4 p-4 text-center">
+            <div class="col-6 bg-navy text-white h4 p-4 text-center">
                 <p>Email de contacto: <a class="text-white" href="mailto:{{$workspace->owner->email}}">{{$workspace->owner->email}}</a></p>
                 <p>Dirección: {{$workspace->address}}</p>
                 <p>Horario: <span id="open_time">{{date('H:i', strtotime($workspace->open))}}</span> - <span id="close_time">{{date('H:i', strtotime($workspace->close))}}</span></p>
@@ -20,7 +20,7 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-12 text-center  bg-primary ">
+        <div class="col-12 text-center  bg-navy ">
             <h1 class="my-4 text-white">Haz tu reserva</h1>
         </div>
     </div>
@@ -34,7 +34,7 @@
         <div class="modal fade" id="reservation" tabindex="-1" role="dialog" aria-labelledby="Modal Reserva"
             aria-hidden="true">
             <div class="modal-dialog" role="document">
-                <div class="modal-content bg-primary">
+                <div class="modal-content bg-navy">
                     <div class="modal-header">
                         <h5 class="modal-title" id="exampleModalLabel">Reservar Espacio de Trabajo</h5>
                         <button type="button" class="close text-white" data-dismiss="modal" aria-label="Close">

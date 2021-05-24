@@ -23,6 +23,7 @@ document.addEventListener('DOMContentLoaded', function () {
         selectOverlap: false,
         slotMinTime: document.querySelector('#open_time').innerHTML,
         slotMaxTime: document.querySelector('#close_time').innerHTML,
+        expandRows: true,
         select: function (info) {
             // Defino las fechas de inicio y la hora de salida
             let startDate = new Date(info.startStr);

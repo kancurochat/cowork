@@ -1,5 +1,5 @@
 {{-- {{TO DO}} --}}
-<footer class="row bg-primary pb-3">
+<footer class="row bg-navy pb-3">
     <div class="col-12 d-inline-flex">
         <div class="col-3">
             <p class="text-white pt-4 h5">

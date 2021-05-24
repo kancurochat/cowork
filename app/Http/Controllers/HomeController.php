@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Models\Workspace;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -21,8 +22,14 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index(Request $request)
     {
-        return view('calendar');
+        if($request->user()->getRoleNames()[0] == 'root' || $request->user()->getRoleNames()[0] == 'owner'){
+            return view('dashboard');
+        }else {
+            $workspaces = Workspace::paginate(6);
+            return view('home', compact('workspaces'));
+        }
+        
     }
 }
