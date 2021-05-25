@@ -12,7 +12,9 @@
 
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js" integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
+        integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
+        crossorigin="anonymous" referrerpolicy="no-referrer"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -28,13 +30,13 @@
         <nav class="navbar navbar-expand-md navbar-light bg-navy shadow-sm">
             <div class="container">
                 @if (Auth::check())
-                <div class="input-group rounded col-2 d-none d-md-flex">
-                    <input type="search" class="form-control rounded" placeholder="Search" aria-label="Search"
-                        aria-describedby="search-addon" />
-                    <span class="input-group-text border-0 bg-primary" id="search-addon">
-                        <i class="fas fa-search"></i>
-                    </span>
-                </div>
+                <form class='form-inline d-none d-md-flex' action="{{ route('home') }}" method="GET">
+
+                    <input type="search" class="form-control " name="texto" id="texto" placeholder="Buscar..."
+                        value="{{$texto ?? ''}}">
+                    <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+
+                </form>
                 <a class="navbar-brand text-white d-md-none" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
@@ -102,6 +104,16 @@
 
         <main>
             <div class="container-fluid">
+                <div class="row d-flex d-md-none my-3">
+                    <form class='form-inline col-12' action="{{ route('home') }}" method="GET">
+
+                        <input type="search" class="form-control col-8" name="texto" id="texto" placeholder="Buscar..."
+                            value="{{$texto ?? ''}}">
+                        <button class="btn btn-primary col-4" type="submit"><i class="fas fa-search"></i></button>
+
+                    </form>
+                </div>
+
                 @yield('content')
                 @include('partials.footer')
             </div>

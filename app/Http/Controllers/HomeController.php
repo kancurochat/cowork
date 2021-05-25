@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Workspace;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\DB;
 
 class HomeController extends Controller
 {
@@ -27,8 +28,15 @@ class HomeController extends Controller
         if($request->user()->getRoleNames()[0] == 'root' || $request->user()->getRoleNames()[0] == 'owner'){
             return view('dashboard');
         }else {
-            $workspaces = Workspace::paginate(6);
-            return view('home', compact('workspaces'));
+            $texto = trim($request->get('texto'));
+
+            $workspaces = DB::table('workspaces')
+            ->select()
+            ->where('name', 'LIKE', '%'.$texto.'%')
+            ->orWhere('address', 'LIKE', '%'.$texto.'%')
+            ->paginate(6);
+
+            return view('home', compact('workspaces', 'texto'));
         }
         
     }

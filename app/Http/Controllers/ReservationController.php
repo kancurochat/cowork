@@ -112,7 +112,7 @@ class ReservationController extends Controller
 
         foreach($data as $event){
             $event->start = $event->start.'T'.$event->time_start; 
-            $event->end = $event->end.'T'.$event->time_end; 
+            $event->end = $event->end.'T'.$event->time_end;
         }
 
         return Response()->json($data);
