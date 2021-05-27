@@ -24,6 +24,7 @@
 
 
 {!! Form::open(array('route' => 'workspaces.create','method'=>'POST')) !!}
+@csrf
 <div class="row">
     <div class="pull-right mb-3">
         <a class="btn btn-primary" href="{{ route('workspaces') }}"> Volver</a>
@@ -34,6 +35,7 @@
             {!! Form::text('name', null, array('placeholder' => 'Name','class' => 'form-control')) !!}
         </div>
     </div>
+    @role('root')
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Propietario:</strong>
@@ -44,6 +46,9 @@
             </select>
         </div>
     </div>
+    @else
+    <input type="hidden" name="owner" value="{{Auth::user()->id}}">
+    @endrole
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Dirección:</strong>

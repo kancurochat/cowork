@@ -225,29 +225,22 @@ return [
 
     'menu' => [
         [
-            'text' => 'search',
-            'search' => true,
-            'topnav' => true,
-        ],
-        [
-            'text' => 'blog',
-            'url'  => 'admin/blog',
-            'can'  => 'manage-blog',
-        ],
-        [
             'text'        => 'Usuarios',
             'url'         => 'users',
             'icon'        => 'fas fa-users',
+            'can'  => 'root-users',
         ],
         [
             'text'        => 'Propietarios',
             'url'         => 'owners',
             'icon'        => 'fas fa-user-tie',
+            'can'  => 'root-owners',
         ],
         [
             'text'        => 'Roles',
             'url'         => 'roles',
             'icon'        => 'fas fa-user-tag',
+            'can'  => 'root-roles',
         ],
         [
             'text'        => 'Reservas',

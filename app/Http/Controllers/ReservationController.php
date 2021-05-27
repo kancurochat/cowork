@@ -6,12 +6,19 @@ use App\Models\Reservation;
 use App\Models\Workspace;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
+use Illuminate\Support\Facades\Auth;
 
 class ReservationController extends Controller
 {
-    public function getReservations()
+    public function getReservations(Request $request)
     {
-        $reservations = Reservation::all();
+
+        if ($request->user()->getRoleNames()[0] == 'owner') {
+            $reservations = Reservation::join('workspaces', 'workspaces.id', '=', 'reservations.workspace_id')
+                ->where('workspaces.user_id', $request->user()->id)->get('reservations.*');
+        } else {
+            $reservations = Reservation::all();
+        }
 
         return view('reservations.index', compact('reservations'));
     }
@@ -23,14 +30,20 @@ class ReservationController extends Controller
         return view('reservations.show', compact('reservation'));
     }
 
-    public function getCreate()
+    public function getCreate(Request $request)
     {
         $data = DB::table('users')
             ->join('model_has_roles', 'users.id', '=', 'model_has_roles.model_id')
             ->where('model_has_roles.role_id', '=', 3)
             ->select('users.*')->get();
 
-        $workspaces = Workspace::all();
+        if ($request->user()->getRoleNames()[0] == 'owner') {
+            $workspaces = Workspace::where('user_id', $request->user()->id)->get();
+        } else {
+            $workspaces = Workspace::all();
+        }
+
+
 
         return view('reservations.create', compact('data', 'workspaces'));
     }
@@ -50,7 +63,7 @@ class ReservationController extends Controller
         return redirect('reservations');
     }
 
-    public function getEdit($id)
+    public function getEdit(Request $request, $id)
     {
         $reservation = Reservation::find($id);
 
@@ -59,10 +72,15 @@ class ReservationController extends Controller
             ->where('model_has_roles.role_id', '=', 3)
             ->select('users.*')->get();
 
-        $workspaces = Workspace::all();
+        if ($request->user()->getRoleNames()[0] == 'owner') {
+            $workspaces = Workspace::where('user_id', $request->user()->id)->get();
+        } else {
+            $workspaces = Workspace::all();
+        }
 
         return view('reservations.edit', compact('reservation', 'data', 'workspaces'));
     }
+
 
     public function putEdit(Request $request, $id)
     {
@@ -79,7 +97,7 @@ class ReservationController extends Controller
         return redirect('reservations');
     }
 
-    public function destroy($id)
+    public function destroy(Request $request, $id)
     {
         $reservation = Reservation::find($id);
 
@@ -108,11 +126,11 @@ class ReservationController extends Controller
 
     public function calendarReservations($id)
     {
-        $data = DB::table('reservations')->where('workspace_id', '=', $id)->select('user_id as title','date as start','date as end','start as time_start', 'end as time_end')->get();
+        $data = DB::table('reservations')->where('workspace_id', '=', $id)->select('user_id as title', 'date as start', 'date as end', 'start as time_start', 'end as time_end')->get();
 
-        foreach($data as $event){
-            $event->start = $event->start.'T'.$event->time_start; 
-            $event->end = $event->end.'T'.$event->time_end;
+        foreach ($data as $event) {
+            $event->start = $event->start . 'T' . $event->time_start;
+            $event->end = $event->end . 'T' . $event->time_end;
         }
 
         return Response()->json($data);

@@ -8,9 +8,16 @@ use Illuminate\Support\Facades\DB;
 
 class WorkspaceController extends Controller
 {
-    public function getWorkspaces()
+    public function getWorkspaces(Request $request)
     {
-        $workspaces = Workspace::all();
+
+        if ($request->user()->getRoleNames()[0] == 'owner') {
+            $workspaces = Workspace::where('user_id', $request->user()->id)->get();
+
+        } else {
+            $workspaces = Workspace::all();
+        }
+
 
         return view('workspaces.index', compact('workspaces'));
     }
@@ -22,7 +29,8 @@ class WorkspaceController extends Controller
         return view('workspaces.show', compact('workspace'));
     }
 
-    public function showCalendar($id){
+    public function showCalendar($id)
+    {
         $workspace = Workspace::find($id);
 
         return view('workspaces.calendar', compact('workspace'));
@@ -66,7 +74,8 @@ class WorkspaceController extends Controller
         return view('workspaces.edit', compact('workspace', 'data'));
     }
 
-    public function putEdit(Request $request, $id) {
+    public function putEdit(Request $request, $id)
+    {
         $workspace = Workspace::find($id);
 
         $workspace->name = $request->input('name');
@@ -81,7 +90,8 @@ class WorkspaceController extends Controller
         return redirect('workspaces');
     }
 
-    public function destroy($id) {
+    public function destroy(Request $request, $id)
+    {
         $workspace = Workspace::find($id);
 
         $workspace->delete();

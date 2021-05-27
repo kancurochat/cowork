@@ -6,6 +6,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\UserController;
 use App\Http\Controllers\RoleController;
 use App\Http\Controllers\WorkspaceController;
+use App\Models\Reservation;
 use App\Models\Workspace;
 
 
@@ -27,7 +28,7 @@ Route::middleware(['auth'])->group(function () {
     Route::get('/', [HomeController::class, 'index'])->name('home');
 
     // Admin routes
-    Route::group(['middleware' => ['role:root']], function () {
+    Route::group(['middleware' => ['role:root|owner']], function () {
 
         // Roles
         Route::resource('roles', RoleController::class);
@@ -35,15 +36,14 @@ Route::middleware(['auth'])->group(function () {
         // Users
         Route::resource('users', UserController::class);
 
-        // Owners
-        Route::get('owners', [UserController::class, 'getOwners']);
-        Route::get('owners/{id}', [UserController::class, 'showOwner']);
+        Route::get('owners', [UserController::class, 'getOwners'])->middleware('role:root');
+        Route::get('owners/{id}', [UserController::class, 'showOwner'])->middleware('role:root');
 
         // Workspaces
         Route::get('workspaces', [WorkspaceController::class, 'getWorkspaces'])->name('workspaces');
 
-        Route::get('workspaces/create', [WorkspaceController::class, 'getCreate']);
-        Route::post('workspaces/create', [WorkspaceController::class, 'postCreate'])->name('workspaces.create');
+        Route::get('workspaces/create', [WorkspaceController::class, 'getCreate'])->name('workspaces.create');
+        Route::post('workspaces/create', [WorkspaceController::class, 'postCreate']);
 
         Route::get('workspaces/{id}/edit', [WorkspaceController::class, 'getEdit'])->name('workspaces.edit');
         Route::put('workspaces/{id}/edit', [WorkspaceController::class, 'putEdit']);
@@ -51,8 +51,7 @@ Route::middleware(['auth'])->group(function () {
         Route::get('workspaces/{id}', [WorkspaceController::class, 'show'])->name('workspaces.show');
 
         Route::delete('workspaces/{id}', [WorkspaceController::class, 'destroy']);
-
-
+        
         // Reservations
         Route::get('reservations', [ReservationController::class, 'getReservations'])->name('reservations');
 
@@ -69,5 +68,4 @@ Route::middleware(['auth'])->group(function () {
 
     Route::get('workspace/{id}', [WorkspaceController::class, 'showCalendar']);
     Route::post('calendar', [ReservationController::class, 'makeReservation'])->name('calendar.reserve');
-
 });

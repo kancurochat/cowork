@@ -7,12 +7,19 @@
             <h1 class="my-4">{{$workspace->name}}</h1>
         </div>
     </div>
+    <div class="row py-0 px-0">
+        <div class="col-md-12 text-center">
+            <img src="https://cdn.pixabay.com/photo/2016/06/25/12/52/laptop-1478822_960_720.jpg" alt="Card image cap" width="80%">
+        </div>
+    </div>
     <div class="row">
         <div class="col-12 px-0 d-inline-flex">
             <div class="col-6 bg-navy text-white h4 p-4 text-center">
-                <p>Email de contacto: <a class="text-white" href="mailto:{{$workspace->owner->email}}">{{$workspace->owner->email}}</a></p>
+                <p>Email de contacto: <a class="text-white"
+                        href="mailto:{{$workspace->owner->email}}">{{$workspace->owner->email}}</a></p>
                 <p>Dirección: {{$workspace->address}}</p>
-                <p>Horario: <span id="open_time">{{date('H:i', strtotime($workspace->open))}}</span> - <span id="close_time">{{date('H:i', strtotime($workspace->close))}}</span></p>
+                <p>Horario: <span id="open_time">{{date('H:i', strtotime($workspace->open))}}</span> - <span
+                        id="close_time">{{date('H:i', strtotime($workspace->close))}}</span></p>
             </div>
             <div class="col-6 h4 p-4 text-center border border-primary">
                 <h4 class="p-5 h3">Capacidad: {{$workspace->seats}}</h4>
@@ -50,7 +57,8 @@
                             </div>
                             <div class="input-group">
                                 <span class="input-group-text">Desde las</span>
-                                <input name="start" id="start_time" type="time" class="form-control text-center" readonly>
+                                <input name="start" id="start_time" type="time" class="form-control text-center"
+                                    readonly>
                             </div>
                             <div class="input-group">
                                 <span class="input-group-text">Hasta las</span>

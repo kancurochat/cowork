@@ -25,9 +25,7 @@
 
 {!! Form::open(array('route' => 'reservations.create','method'=>'POST')) !!}
 <div class="row">
-    <div class="pull-right mb-3">
-        <a class="btn btn-primary" href="{{ route('reservations') }}"> Volver</a>
-    </div>
+    <a class="btn btn-primary" href="{{ route('reservations') }}"> Volver</a>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Usuario:</strong>

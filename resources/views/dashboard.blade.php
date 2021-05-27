@@ -8,6 +8,8 @@
 
 @section('content')
 <div class="row">
+    @role('root')
+    {{-- Root Part --}}
     <div class="col-auto">
         <div class="card card-primary card-outline">
             <div class="card-header">
@@ -52,7 +54,6 @@
             </div>
         </div>
     </div>
-
     <div class="col-auto">
         <div class="card card-primary card-outline">
             <div class="card-header">
@@ -60,9 +61,34 @@
             </div>
             <div class="card-body">
                 <p class="card-text">Gestiona las reservas.</p>
-                <a href="#" class="btn btn-primary">Acceder</a>
+                <a href="reservations" class="btn btn-primary">Acceder</a>
             </div>
         </div>
     </div>
+    @else
+    {{-- Owner Part --}}
+    <div class="col-auto">
+        <div class="card card-primary card-outline">
+            <div class="card-header">
+                <h5 class="m-0">Espacios de Trabajo</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Gestiona las salas disponibles.</p>
+                <a href="workspaces" class="btn btn-primary">Acceder</a>
+            </div>
+        </div>
+    </div>
+    <div class="col-auto">
+        <div class="card card-primary card-outline">
+            <div class="card-header">
+                <h5 class="m-0">Reservas</h5>
+            </div>
+            <div class="card-body">
+                <p class="card-text">Gestiona las reservas.</p>
+                <a href="reservations" class="btn btn-primary">Acceder</a>
+            </div>
+        </div>
+    </div>
+    @endrole    
 </div>
 @stop

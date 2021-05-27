@@ -11,6 +11,7 @@
     <div class="pull-right mb-3">
         <a class="btn btn-primary" href="{{ route('workspaces') }}"> Volver</a>
     </div>
+
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Nombre:</strong>
@@ -23,12 +24,15 @@
             {{ $workspace->address }}
         </div>
     </div>
+    @role('root')
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Propietario:</strong>
             {{ $workspace->owner->email }}
         </div>
     </div>
+    @else
+    @endrole
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
             <strong>Horario:</strong>
@@ -46,7 +50,7 @@
         <div class="form-group">                        TO-DO
             <strong>Foto:</strong>
             {{ $workspace->photo }}
-        </div>
-    </div> --}}
+</div>
+</div> --}}
 </div>
 @endsection
