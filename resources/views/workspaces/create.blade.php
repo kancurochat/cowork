@@ -71,14 +71,45 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>Aforo:</strong>
-            {!! Form::number('seats', null, array('class' => 'form-control', 'min' => 1))
-            !!}
+            <strong>Servicios:</strong>
+            <div class="form-group d-block">
+                <div class="form-check text-dark my-1">
+                    <input class="form-check-input" type="checkbox" value="internet" id="internet" name="services[]">
+                    <label class="form-check-label" for="internet">
+                        Internet
+                    </label>
+                </div>
+                <div class="form-check text-dark my-1">
+                    <input class="form-check-input" type="checkbox" value="escáner" id="escaner" name="services[]">
+                    <label class="form-check-label" for="escaner">
+                        Escáner
+                    </label>
+                </div>
+                <div class="form-check text-dark my-1">
+                    <input class="form-check-input" type="checkbox" value="fotocopiadora" id="fotocopiadora"
+                        name="services[]">
+                    <label class="form-check-label" for="fotocopiadora">
+                        Fotocopiadora
+                    </label>
+                </div>
+                <div class="form-check text-dark my-1">
+                    <input class="form-check-input" type="checkbox" value="impresora" id="impresora" name="services[]">
+                    <label class="form-check-label" for="impresora">
+                        Impresora
+                    </label>
+                </div>
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Aforo:</strong>
+                {!! Form::number('seats', null, array('class' => 'form-control', 'min' => 1))
+                !!}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+            <button type="submit" class="btn btn-primary m-2">Crear</button>
         </div>
     </div>
-    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        <button type="submit" class="btn btn-primary m-2">Crear</button>
-    </div>
-</div>
-{!! Form::close() !!}
-@endsection
+    {!! Form::close() !!}
+    @endsection

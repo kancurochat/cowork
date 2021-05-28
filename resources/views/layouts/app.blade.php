@@ -15,6 +15,7 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
         integrity="sha512-qTXRIMyZIFb8iQcfjXWCO8+M5Tbc38Qi5WzdPOYZHIlZpzBHG3L3by84BBBOiRGiEb7KKtAOAs5qYdUiZiQNNQ=="
         crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="{{asset('js/adminlte.min.js')}}"></script>
 
     <!-- Fonts -->
     <link rel="dns-prefetch" href="//fonts.gstatic.com">
@@ -32,9 +33,87 @@
                 @if (Auth::check())
                 <form class='form-inline d-none d-md-flex' action="{{ route('home') }}" method="GET">
 
-                    <input type="search" class="form-control " name="texto" id="texto" placeholder="Buscar..."
-                        value="{{$texto ?? ''}}">
-                    <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                    <div class="col-12">
+                        <input type="search" class="form-control " name="texto" id="texto" placeholder="Buscar..."
+                            value="{{$texto ?? ''}}">
+                        <button class="btn btn-primary" type="submit"><i class="fas fa-search"></i></button>
+                        <div class="card card-primary collapsed-card mt-2">
+                            <div class="card-header bg-navy">
+                                <h3 class="card-title">Servicios</h3>
+
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                                            class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body" style="display: none;">
+                                <div class="form-group d-block">
+                                    <div class="form-check text-dark my-1">
+                                        @if (in_array('internet', $services ?? []))
+                                        <input class="form-check-input" type="checkbox" value="internet" id="internet"
+                                            name="services[]" checked>
+                                        <label class="form-check-label" for="internet">
+                                            Internet
+                                        </label>
+                                        @else
+                                        <input class="form-check-input" type="checkbox" value="internet" id="internet"
+                                            name="services[]">
+                                        <label class="form-check-label" for="internet">
+                                            Internet
+                                        </label>
+                                        @endif
+                                    </div>
+                                    <div class="form-check text-dark my-1">
+                                        @if (in_array('escáner', $services ?? []))
+                                        <input class="form-check-input" type="checkbox" value="escáner" id="escaner"
+                                            name="services[]" checked>
+                                        <label class="form-check-label" for="escaner">
+                                            Escáner
+                                        </label>
+                                        @else
+                                        <input class="form-check-input" type="checkbox" value="escáner" id="escaner"
+                                            name="services[]">
+                                        <label class="form-check-label" for="escaner">
+                                            Escáner
+                                        </label>
+                                        @endif
+                                    </div>
+                                    <div class="form-check text-dark my-1">
+                                        @if (in_array('fotocopiadora', $services ?? []))
+                                        <input class="form-check-input" type="checkbox" value="fotocopiadora"
+                                            id="fotocopiadora" name="services[]" checked>
+                                        <label class="form-check-label" for="fotocopiadora">
+                                            Fotocopiadora
+                                        </label>
+                                        @else
+                                        <input class="form-check-input" type="checkbox" value="fotocopiadora"
+                                            id="fotocopiadora" name="services[]">
+                                        <label class="form-check-label" for="fotocopiadora">
+                                            Fotocopiadora
+                                        </label>
+                                        @endif
+                                    </div>
+                                    <div class="form-check text-dark my-1">
+                                        @if (in_array('impresora', $services ?? []))
+                                        <input class="form-check-input" type="checkbox" value="impresora" id="impresora"
+                                            name="services[]" checked>
+                                        <label class="form-check-label" for="impresora">
+                                            Impresora
+                                        </label>
+                                        @else
+                                        <input class="form-check-input" type="checkbox" value="impresora" id="impresora"
+                                            name="services[]">
+                                        <label class="form-check-label" for="impresora">
+                                            Impresora
+                                        </label>
+                                        @endif
+                                    </div>
+                                    <button class="btn btn-primary float-right my-1" type="submit">Filtrar</button>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
 
                 </form>
                 <a class="navbar-brand text-white d-md-none" href="{{ url('/') }}">
@@ -111,6 +190,81 @@
                             value="{{$texto ?? ''}}">
                         <button class="btn btn-primary col-4" type="submit"><i class="fas fa-search"></i></button>
 
+                        <div class="card card-primary collapsed-card mt-2">
+                            <div class="card-header bg-navy">
+                                <h3 class="card-title">Servicios</h3>
+
+                                <div class="card-tools">
+                                    <button type="button" class="btn btn-tool" data-card-widget="collapse"><i
+                                            class="fas fa-plus"></i>
+                                    </button>
+                                </div>
+                            </div>
+                            <div class="card-body" style="display: none;">
+                                <div class="form-group d-block">
+                                    <div class="form-check text-dark my-1">
+                                        @if (in_array('internet', $services ?? []))
+                                        <input class="form-check-input" type="checkbox" value="internet" id="internet"
+                                            name="services[]" checked>
+                                        <label class="form-check-label" for="internet">
+                                            Internet
+                                        </label>
+                                        @else
+                                        <input class="form-check-input" type="checkbox" value="internet" id="internet"
+                                            name="services[]">
+                                        <label class="form-check-label" for="internet">
+                                            Internet
+                                        </label>
+                                        @endif
+                                    </div>
+                                    <div class="form-check text-dark my-1">
+                                        @if (in_array('escáner', $services ?? []))
+                                        <input class="form-check-input" type="checkbox" value="escáner" id="escaner"
+                                            name="services[]" checked>
+                                        <label class="form-check-label" for="escaner">
+                                            Escáner
+                                        </label>
+                                        @else
+                                        <input class="form-check-input" type="checkbox" value="escáner" id="escaner"
+                                            name="services[]">
+                                        <label class="form-check-label" for="escaner">
+                                            Escáner
+                                        </label>
+                                        @endif
+                                    </div>
+                                    <div class="form-check text-dark my-1">
+                                        @if (in_array('fotocopiadora', $services ?? []))
+                                        <input class="form-check-input" type="checkbox" value="fotocopiadora"
+                                            id="fotocopiadora" name="services[]" checked>
+                                        <label class="form-check-label" for="fotocopiadora">
+                                            Fotocopiadora
+                                        </label>
+                                        @else
+                                        <input class="form-check-input" type="checkbox" value="fotocopiadora"
+                                            id="fotocopiadora" name="services[]">
+                                        <label class="form-check-label" for="fotocopiadora">
+                                            Fotocopiadora
+                                        </label>
+                                        @endif
+                                    </div>
+                                    <div class="form-check text-dark my-1">
+                                        @if (in_array('impresora', $services ?? []))
+                                        <input class="form-check-input" type="checkbox" value="impresora" id="impresora"
+                                            name="services[]" checked>
+                                        <label class="form-check-label" for="impresora">
+                                            Impresora
+                                        </label>
+                                        @else
+                                        <input class="form-check-input" type="checkbox" value="impresora" id="impresora"
+                                            name="services[]">
+                                        <label class="form-check-label" for="impresora">
+                                            Impresora
+                                        </label>
+                                        @endif
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
                     </form>
                 </div>
 

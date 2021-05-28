@@ -22,7 +22,13 @@
                         id="close_time">{{date('H:i', strtotime($workspace->close))}}</span></p>
             </div>
             <div class="col-6 h4 p-4 text-center border border-primary">
-                <h4 class="p-5 h3">Capacidad: {{$workspace->seats}}</h4>
+                {{-- <h4 class="p-5 h3">Capacidad: {{$workspace->seats}}</h4> --}}
+                <h4 class="h3">Servicios:</h4>
+                <ul class="list-group">
+                    @foreach ($services as $service)
+                    <li class="list-group-item py-3">{{ucfirst($service)}}</li>
+                    @endforeach
+                  </ul>
             </div>
         </div>
     </div>

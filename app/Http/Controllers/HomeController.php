@@ -29,14 +29,17 @@ class HomeController extends Controller
             return view('dashboard');
         }else {
             $texto = trim($request->get('texto'));
+            $services = $request->get('services') ?? [];
+            $servicesQuery = implode(',', $services) ?? '';
 
+            // Queda pendiente filtrar por servicios
             $workspaces = DB::table('workspaces')
             ->select()
             ->where('name', 'LIKE', '%'.$texto.'%')
-            ->orWhere('address', 'LIKE', '%'.$texto.'%')
+            ->where('services', 'LIKE', '%'.$servicesQuery.'%')
             ->paginate(6);
 
-            return view('home', compact('workspaces', 'texto'));
+            return view('home', compact('workspaces', 'texto', 'services'));
         }
         
     }

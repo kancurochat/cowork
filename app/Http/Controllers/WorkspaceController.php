@@ -33,7 +33,9 @@ class WorkspaceController extends Controller
     {
         $workspace = Workspace::find($id);
 
-        return view('workspaces.calendar', compact('workspace'));
+        $services = explode(',', $workspace->services);
+
+        return view('workspaces.calendar', compact('workspace', 'services'));
     }
 
     public function getCreate()
@@ -46,6 +48,10 @@ class WorkspaceController extends Controller
         return view('workspaces.create', compact('data'));
     }
 
+
+    // Queda pendiente añadir los servicios (Falta hacer un artisan migrate)
+
+
     public function postCreate(Request $request)
     {
         $workspace = new Workspace();
@@ -55,7 +61,11 @@ class WorkspaceController extends Controller
         $workspace->address = $request->input('address');
         $workspace->open = $request->input('open');
         $workspace->close = $request->input('close');
-        $workspace->seats = $request->input('seats');
+        $workspace->seats = $request->input('seats') ?? 1;
+
+        // Servicios
+        $services = implode(',' ,$request->get('services'));
+        $workspace->services =  $services;
 
         $workspace->save();
 
@@ -66,12 +76,14 @@ class WorkspaceController extends Controller
     {
         $workspace = Workspace::find($id);
 
+        $services = explode(',', $workspace->services);
+
         $data = DB::table('users')
             ->join('model_has_roles', 'users.id', '=', 'model_has_roles.model_id')
             ->where('model_has_roles.role_id', '=', 2)
             ->select('users.*')->get();
 
-        return view('workspaces.edit', compact('workspace', 'data'));
+        return view('workspaces.edit', compact('workspace', 'data', 'services'));
     }
 
     public function putEdit(Request $request, $id)
@@ -83,7 +95,11 @@ class WorkspaceController extends Controller
         $workspace->address = $request->input('address');
         $workspace->open = $request->input('open');
         $workspace->close = $request->input('close');
-        $workspace->seats = $request->input('seats');
+        $workspace->seats = $request->input('seats') ?? 1;
+
+        // Servicios
+        $services = implode(',' ,$request->get('services'));
+        $workspace->services =  $services;
 
         $workspace->save();
 

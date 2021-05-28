@@ -71,13 +71,76 @@
     </div>
     <div class="col-xs-12 col-sm-12 col-md-12">
         <div class="form-group">
-            <strong>Aforo:</strong>
-            {!! Form::number('seats', null, array('class' => 'form-control', 'min' => 1))
-            !!}
+            <strong>Servicios:</strong>
+            <div class="form-group d-block">
+                <div class="form-check text-dark my-1">
+                    @if (in_array('internet', $services))
+                    <input class="form-check-input" type="checkbox" value="internet" id="internet" name="services[]" checked>
+                    <label class="form-check-label" for="internet">
+                        Internet
+                    </label>
+                    @else
+                    <input class="form-check-input" type="checkbox" value="internet" id="internet" name="services[]">
+                    <label class="form-check-label" for="internet">
+                        Internet
+                    </label>
+                    @endif
+                    
+                </div>
+                <div class="form-check text-dark my-1">
+                    @if (in_array('escáner', $services))
+                    <input class="form-check-input" type="checkbox" value="escáner" id="escaner" name="services[]" checked>
+                    <label class="form-check-label" for="escaner">
+                        Escáner
+                    </label>
+                    @else
+                    <input class="form-check-input" type="checkbox" value="escáner" id="escaner" name="services[]">
+                    <label class="form-check-label" for="escaner">
+                        Escáner
+                    </label>
+                    @endif
+                </div>
+                <div class="form-check text-dark my-1">
+                    @if (in_array('fotocopiadora', $services))
+                    <input class="form-check-input" type="checkbox" value="fotocopiadora" id="fotocopiadora"
+                        name="services[]" checked>
+                    <label class="form-check-label" for="fotocopiadora">
+                        Fotocopiadora
+                    </label>
+                    @else
+                    <input class="form-check-input" type="checkbox" value="fotocopiadora" id="fotocopiadora"
+                        name="services[]">
+                    <label class="form-check-label" for="fotocopiadora">
+                        Fotocopiadora
+                    </label>
+                    @endif
+                </div>
+                <div class="form-check text-dark my-1">
+                    @if (in_array('impresora', $services))
+                    <input class="form-check-input" type="checkbox" value="impresora" id="impresora" name="services[]" checked>
+                    <label class="form-check-label" for="impresora">
+                        Impresora
+                    </label>
+                    @else
+                    <input class="form-check-input" type="checkbox" value="impresora" id="impresora" name="services[]">
+                    <label class="form-check-label" for="impresora">
+                        Impresora
+                    </label>
+                    @endif
+                    
+                </div>
+            </div>
         </div>
-    </div>
-    <div class="col-xs-12 col-sm-12 col-md-12 text-center">
-        <button type="submit" class="btn btn-primary m-2">Enviar</button>
+        <div class="col-xs-12 col-sm-12 col-md-12">
+            <div class="form-group">
+                <strong>Aforo:</strong>
+                {!! Form::number('seats', null, array('class' => 'form-control', 'min' => 1))
+                !!}
+            </div>
+        </div>
+        <div class="col-xs-12 col-sm-12 col-md-12 text-center">
+            <button type="submit" class="btn btn-primary m-2">Crear</button>
+        </div>
     </div>
 </div>
 {!! Form::close() !!}
