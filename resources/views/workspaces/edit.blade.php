@@ -12,7 +12,7 @@
 
 @if (count($errors) > 0)
 <div class="alert alert-danger">
-    <strong>Whoops!</strong> There were some problems with your input.<br><br>
+    <strong>Ups!</strong> Hubieron problemas para añadir el espacio de trabajo.<br><br>
     <ul>
         @foreach ($errors->all() as $error)
         <li>{{ $error }}</li>
@@ -75,7 +75,8 @@
             <div class="form-group d-block">
                 <div class="form-check text-dark my-1">
                     @if (in_array('internet', $services))
-                    <input class="form-check-input" type="checkbox" value="internet" id="internet" name="services[]" checked>
+                    <input class="form-check-input" type="checkbox" value="internet" id="internet" name="services[]"
+                        checked>
                     <label class="form-check-label" for="internet">
                         Internet
                     </label>
@@ -85,11 +86,12 @@
                         Internet
                     </label>
                     @endif
-                    
+
                 </div>
                 <div class="form-check text-dark my-1">
                     @if (in_array('escáner', $services))
-                    <input class="form-check-input" type="checkbox" value="escáner" id="escaner" name="services[]" checked>
+                    <input class="form-check-input" type="checkbox" value="escáner" id="escaner" name="services[]"
+                        checked>
                     <label class="form-check-label" for="escaner">
                         Escáner
                     </label>
@@ -117,7 +119,8 @@
                 </div>
                 <div class="form-check text-dark my-1">
                     @if (in_array('impresora', $services))
-                    <input class="form-check-input" type="checkbox" value="impresora" id="impresora" name="services[]" checked>
+                    <input class="form-check-input" type="checkbox" value="impresora" id="impresora" name="services[]"
+                        checked>
                     <label class="form-check-label" for="impresora">
                         Impresora
                     </label>
@@ -127,7 +130,7 @@
                         Impresora
                     </label>
                     @endif
-                    
+
                 </div>
             </div>
         </div>

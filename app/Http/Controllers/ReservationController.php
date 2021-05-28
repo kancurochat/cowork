@@ -6,7 +6,7 @@ use App\Models\Reservation;
 use App\Models\Workspace;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\Auth;
+use App\Http\Requests\ReservationRequest;
 
 class ReservationController extends Controller
 {
@@ -48,7 +48,7 @@ class ReservationController extends Controller
         return view('reservations.create', compact('data', 'workspaces'));
     }
 
-    public function postCreate(Request $request)
+    public function postCreate(ReservationRequest $request)
     {
         $reservation = new Reservation();
 
@@ -82,7 +82,7 @@ class ReservationController extends Controller
     }
 
 
-    public function putEdit(Request $request, $id)
+    public function putEdit(ReservationRequest $request, $id)
     {
         $reservation = Reservation::find($id);
 

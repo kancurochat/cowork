@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use App\Models\Workspace;
 use Illuminate\Http\Request;
+use App\Http\Requests\WorkspaceRequest;
 use Illuminate\Support\Facades\DB;
 
 class WorkspaceController extends Controller
@@ -52,7 +53,7 @@ class WorkspaceController extends Controller
     // Queda pendiente añadir los servicios (Falta hacer un artisan migrate)
 
 
-    public function postCreate(Request $request)
+    public function postCreate(WorkspaceRequest $request)
     {
         $workspace = new Workspace();
 
@@ -86,7 +87,7 @@ class WorkspaceController extends Controller
         return view('workspaces.edit', compact('workspace', 'data', 'services'));
     }
 
-    public function putEdit(Request $request, $id)
+    public function putEdit(WorkspaceRequest $request, $id)
     {
         $workspace = Workspace::find($id);
 

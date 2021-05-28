@@ -31,7 +31,7 @@ return [
     */
 
     'use_ico_only' => false,
-    'use_full_favicon' => false,
+    'use_full_favicon' => true,
 
     /*
     |--------------------------------------------------------------------------
@@ -46,11 +46,11 @@ return [
     */
 
     'logo' => '<b>Canary</b> Workspaces',
-    'logo_img' => 'vendor/adminlte/dist/img/AdminLTELogo.png',
+    'logo_img' => /* 'vendor/adminlte/dist/img/AdminLTELogo.png' */'vendor/img/brand-logo.png',
     'logo_img_class' => 'brand-image img-circle elevation-3',
     'logo_img_xl' => null,
     'logo_img_xl_class' => 'brand-image-xs',
-    'logo_img_alt' => 'AdminLTE',
+    'logo_img_alt' => 'CanaryWorkspaces',
 
     /*
     |--------------------------------------------------------------------------
@@ -252,7 +252,7 @@ return [
             'url'         => 'workspaces',
             'icon'        => 'fas fa-briefcase',
         ],
-        ['header' => 'account_settings'],
+        /* ['header' => 'account_settings'],
         [
             'text' => 'profile',
             'url'  => 'admin/settings',
@@ -300,7 +300,7 @@ return [
                     'url'  => '#',
                 ],
             ],
-        ],
+        ], */
     ],
 
     /*

@@ -10,6 +10,10 @@
 
     <title>{{ config('app.name', 'Laravel') }}</title>
 
+    <!-- Favicon -->
+    <link rel="icon" href="{{ asset('favicon.ico') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{asset('favicons/favicon-16x16.png')}}">
+
     <!-- Scripts -->
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.29.1/moment.min.js"
@@ -119,8 +123,8 @@
                 <a class="navbar-brand text-white d-md-none" href="{{ url('/') }}">
                     {{ config('app.name', 'Laravel') }}
                 </a>
-                <a class="navbar-brand text-white d-none d-md-flex" href="{{ url('/') }}">
-                    <h1 class="display-4">{{ config('app.name', 'Laravel') }}</h1>
+                <a class="navbar-brand text-white d-none d-md-flex mx-5" href="{{ url('/') }}">
+                    <img src="{{asset('img/canaryWorkspaces.png')}}" alt="CanaryWorkspaces">
                 </a>
                 @else
                 <a class="navbar-brand text-white" href="{{ url('/') }}">
@@ -262,6 +266,7 @@
                                         </label>
                                         @endif
                                     </div>
+                                    <button class="btn btn-primary float-right my-1" type="submit">Filtrar</button>
                                 </div>
                             </div>
                         </div>

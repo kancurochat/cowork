@@ -27,7 +27,6 @@ class AuthServiceProvider extends ServiceProvider
         $this->registerPolicies();
 
         // Root Gates
-
         Gate::define('root-users', function (User $user) {
             if($user->getRoleNames()[0] == 'root'){
                 return true;
