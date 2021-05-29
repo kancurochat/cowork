@@ -25,9 +25,9 @@ Auth::routes();
 
 Auth::routes(['verify' => 'true']);
 
-Route::middleware(['auth', 'verified'])->group(function () {
+Route::get('/', [HomeController::class, 'index'])->name('home');
 
-    Route::get('/', [HomeController::class, 'index'])->name('home');
+Route::middleware(['auth', 'verified'])->group(function () {
 
     // Admin routes
     Route::group(['middleware' => ['role:root|owner']], function () {

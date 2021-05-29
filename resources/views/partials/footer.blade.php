@@ -1,4 +1,3 @@
-{{-- {{TO DO}} --}}
 <footer class="row bg-navy pb-3">
     <div class="col-12 d-block d-md-inline-flex">
         <div class="col-md-3 col-12">
@@ -25,7 +24,7 @@
             <p class="text-white pt-4 h5">
                 Contacto
             </p>
-            <p class="ml-3"><i class="fas fa-envelope text-white mx-2"></i><a class="text-white" href="mailto:contacto@codefacil.com">contacto @ codefacil.com</a></p>
+            <p class="ml-3"><i class="fas fa-envelope text-white mx-2"></i><a class="text-white" href="mailto:contacto@canaryworkspaces.com">contacto @ canaryworkspaces.com</a></p>
         </div>
     </div>
 </footer>

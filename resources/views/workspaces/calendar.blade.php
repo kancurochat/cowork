@@ -13,15 +13,15 @@
         </div>
     </div>
     <div class="row">
-        <div class="col-12 px-0 d-inline-flex">
-            <div class="col-6 bg-navy text-white h4 p-4 text-center">
+        <div class="col-12 px-0 d-md-inline-flex">
+            <div class="col-md-6 col-12 bg-navy text-white h4 p-4 text-center">
                 <p>Email de contacto: <a class="text-white"
                         href="mailto:{{$workspace->owner->email}}">{{$workspace->owner->email}}</a></p>
                 <p>Dirección: {{$workspace->address}}</p>
                 <p>Horario: <span id="open_time">{{date('H:i', strtotime($workspace->open))}}</span> - <span
                         id="close_time">{{date('H:i', strtotime($workspace->close))}}</span></p>
             </div>
-            <div class="col-6 h4 p-4 text-center border border-primary">
+            <div class="col-md-6 col-12 h4 p-4 text-center border border-primary">
                 {{-- <h4 class="p-5 h3">Capacidad: {{$workspace->seats}}</h4> --}}
                 <h4 class="h3">Servicios:</h4>
                 <ul class="list-group">
