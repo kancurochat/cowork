@@ -17,8 +17,8 @@
             <p class="text-white pt-4 h5">
                 Legal
             </p>
-            <p><a class="text-white ml-3" href="https://codefacil.com/informacion-legal">Información Legal</a></p>
-            <p><a class="text-white ml-3" href="https://codefacil.com/privacidad">Política de Privacidad y Protección de Datos</a></p>
+            <p><a class="text-white ml-3" href="{{route('legal')}}">Información Legal</a></p>
+            <p><a class="text-white ml-3" href="{{route('privacidad')}}">Política de Privacidad y Protección de Datos</a></p>
         </div>
         <div class="col-md-3 col-12">
             <p class="text-white pt-4 h5">
